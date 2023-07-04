@@ -14,9 +14,10 @@ int main()
 	}
 	std::cout << std::endl;
 
-	[&vec]() {
-		std::for_each(vec.begin(), vec.end(), [](int j) {j *= 3;});
+	auto func = [&vec]() {
+		std::for_each(vec.begin(), vec.end(), [](int& j) {j *= 3;});
 	};
+	func();
 
 	std::cout << "Выходные данные: ";
 	for (int i = 0; i < vec.size(); i++) {
